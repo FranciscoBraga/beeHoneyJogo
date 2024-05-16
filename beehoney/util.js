@@ -35,8 +35,20 @@ class Obj{
 }
 class Bee extends Obj{
     dir = 0
+    lifes = 3 
+    pts = 0
     Move(){
         this.x +=  this.dir
+    }
+
+    Collider(Obj){
+        if(this.x < Obj.x + Obj.width && this.x +this.width > Obj.x ){
+           if (this.y < Obj.y + Obj.height && this.y + this.height > Obj.y ){
+             return true
+           }else{
+            return false
+           }  
+        }
     }
 }
 
@@ -47,6 +59,11 @@ class Spider extends Obj{
             this.y = -10
             this.x = Math.random()*(320-0)
         }
+    }
+
+    respaw(){
+        this.y = -50
+        this.x = Math.random()*(320-0)
     }
 
 }
@@ -61,4 +78,22 @@ class Bg extends Obj{
  }
 
 class Florwer extends Spider{
- }
+    
+    respaw(){
+        this.y = -50
+        this.x = Math.random()*(320-0)
+    }
+}
+
+class Text {
+   Draw(text,x,y){
+    canvas.font ="40px Arial"
+    canvas.fillStyle = "white"
+    canvas.fillText(text,x,y)
+   } 
+}
+
+
+
+
+
